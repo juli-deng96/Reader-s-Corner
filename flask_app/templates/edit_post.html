@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reader's Corner | Edit Post </title>
+    <link rel="stylesheet" type= "text/css" href="{{url_for('static', filename='editstyle.css')}}">
+</head>
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='images/logo.png') }}">
+        <h1> Edit Post </h1>
+        <div class="links"> 
+            <a href="/home"> Home </a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="main">
+        <form action="/edit/{{post.id}}" method="post">
+            <div class="formgroup"> 
+                <label for="post_text" class="post_text"> Post:</label>
+                <input type="text" name="post_text"> 
+            </div>
+            <div class="formgroup"> 
+                <label for="book_club" class="book_club"> Book Club:</label>
+                <select id="book_club" name="book_club">
+                    <option value="lover_girlz">Lover Girlz</option>
+                    <option value="murder_club">Murder Club</option>
+                    <option value="theoligist">Theatrical Theoligist </option>
+                </select>
+            </div>
+            <input type="date" id="date_posted" name="date_posted">
+        </form>
+        <div class="footer">
+            <a href="/delete"> Delete Post</a>
+            <input type="submit" value="Update" class="btn">
+        </div>
+    </div>
+</body>
+</html>

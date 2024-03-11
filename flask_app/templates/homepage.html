@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Reader's Corner | Home Page</title>
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/homepage.css') }}">
+</head>
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='images/logo.png') }}">
+        <h1>Welcome, {{user.first_name}}</h1>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="container">
+        <div class="user_info">
+            <img>
+            <a href="/profile/{{user_id}}">Profile</a>
+        </div>
+        <div class="post">
+            <h2> Recent Post</h2>
+            {% for post in posts %}
+                <p> <strong> {{post.host_username}}</strong> posted to <strong>{{post.book_club}}</strong>{{post.post}} </p>
+                <p> <strong> {{post.date_posted}}</strong> </p>
+                <p> insert likes and comments here</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

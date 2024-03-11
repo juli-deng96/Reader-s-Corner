@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reader's Corner | Register</title>
+    <link rel="stylesheet" type= "text/css" href="{{url_for('static', filename='register.css')}}">
+</head>
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='images/logo.png') }}">
+        <h1>Reader's Corner</h1>
+    </div>
+    <div class="register">
+        <h2> Create an Account</h2>
+        <form action="/register" method="post">
+            {% with messages = get_flashed_messages(category_filter=['register']) %}
+                {% if messages %}
+                    <div class="alert alert-danger" role="alert">
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            <div class="formgroup"> 
+                <label for="first_name" class="firstname"> First Name:</label>
+                <input type="text" name="first_name"> 
+            </div>
+            <div class="formgroup"> 
+                <label for="last_name" class="lastname"> Last Name:</label>
+                <input type="text" name="last_name"> 
+            </div>
+            <div class="formgroup"> 
+                <label for="username" class="username"> Username:</label>
+                <input type="text" name="username"> 
+            </div>
+            <div class="formgroup"> 
+                <label for="email" class="email"> Email:</label>
+                <input type="text" name="email"> 
+            </div>
+            <div class="formgroup"> 
+                <label for="password" class="password"> Password:</label>
+                <input type="text" name="password">
+            </div>
+            <div class="formgroup"> 
+                <label for="confirm_password" class="confirm_password"> Confirm Password:</label>
+                <input type="text" name="confirm_password">
+            </div>
+        </form>
+        <input type="submit" value="Submit" class="btn">
+</body>
+</html>
