@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reader's Corner | Register</title>
-    <link rel="stylesheet" type= "text/css" href="{{url_for('static', filename='register.css')}}">
+    <link rel="stylesheet" type= "text/css" href=" {{ url_for ('static', filename ='css/register.css' )}} ">
 </head>
 <body>
+    <a href="/logout">Back to Login</a>
     <div class="header">
         <img src="{{ url_for('static', filename='images/logo.png') }}">
         <h1>Reader's Corner</h1>
     </div>
+    <h2> Create an Account</h2>
     <div class="register">
-        <h2> Create an Account</h2>
         <form action="/register" method="post">
             {% with messages = get_flashed_messages(category_filter=['register']) %}
                 {% if messages %}
@@ -47,7 +48,8 @@
                 <label for="confirm_password" class="confirm_password"> Confirm Password:</label>
                 <input type="text" name="confirm_password">
             </div>
+            <input type="submit" value="Submit" class="btn">
         </form>
-        <input type="submit" value="Submit" class="btn">
+        
 </body>
 </html>

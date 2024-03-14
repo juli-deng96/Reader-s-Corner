@@ -9,36 +9,50 @@
 <body>
     <div class="header">
         <img src="{{ url_for('static', filename='images/logo.png') }}">
-        <h1> Hi,{{user.first_name}}</h1>
+        <h1> Hi, {{user.first_name}}</h1>
         <div class="links"> 
-            <a href="/home"> Home </a>
+            <a href="/homepage"> Home |</a>
             <a href="/logout">Logout</a>
         </div>
     </div>
     <div class="main">
         <div class="user_info">
-            <img src="" >
-            <form action="/upload" method="post" enctype="multipart/form-data" style="display: none;">
-                <input type="file" name="photoUpload" accept="image/*">
-                <button type="submit">Upload</button>
-            </form>
-            <a href="#" id="uploadLink">Change Profile Picture</a>
-            <script>
-                document.getElementById('uploadLink').addEventListener('click', function() {
-                    document.querySelector('form').submit();
-                });
+            <img class="profilepic" id="profilePic" src="{{ url_for('static', filename='uploads/default.jpeg') }}">
+    <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data" style="display: none;">
+        <input type="hidden" name="id" value="{{ user.id }}">
+        <input type="file" id="fileInput" name="photoUpload" accept="image/*">
+        <button type="submit">Change Profile Picture</button>
+    </form>
+    <a href="#" id="uploadLink">Change Profile Picture</a>
+    <script>
+        document.getElementById('uploadLink').addEventListener('click', function(event) {
+            event.preventDefault(); 
+            document.getElementById('fileInput').click();
+        });
+        document.getElementById('fileInput').addEventListener('change', function() {
+            var fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length > 0) {
+                document.getElementById('uploadForm').submit();
+            }
+        });
+        const urlParams = new URLSearchParams(window.location.search);
+        const photoFilename = urlParams.get('photo');
+        if (photoFilename) {
+            document.getElementById('profilePic').src = '/static/uploads/' + photoFilename;
+        }
             </script>
-            <a href="/create/{{user_id}}"> + Create Post</a>
+            <a href="/create"> + Create Post</a>
         </div>
         <div class="user_posts">
             <h2> Your Post </h2>
             {% for post in posts %}
-            <p> <strong> {{post.host_username}}</strong> posted to <strong>{{post.book_club}}</strong>{{post.post}} </p>
-            <p> <strong> {{post.date_posted}}</strong> </p>
-            <p>insert likes and comments here </p>
-                {% if session.user_id == post.host_id %}
-                        <a href="/edit/{{post.id}}">Edit <strong>|</strong></a>
-                        <a href="/delete/{{post.id}}">Delete</a>
+                {% if session.uid == post.host_id %}
+                    <p> <strong> {{post.host.username}}</strong> posted to <strong>{{post.book_club}}</strong></p>
+                    <p> {{post.comment}} </p>
+                    <p> Date Posted: <strong> {{post.date}}</strong> </p>
+                    <p>insert likes and comments here </p>
+                    <a href="/post/edit/{{post.id}}">Edit <strong>|</strong></a>
+                    <a href="/delete/{{post.id}}">Delete</a>
                 {% endif %}
             {% endfor %}
         </div>

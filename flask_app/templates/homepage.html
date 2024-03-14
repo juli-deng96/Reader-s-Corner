@@ -4,25 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Reader's Corner | Home Page</title>
-    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/homepage.css') }}">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/homepagestyle.css') }}">
 </head>
 <body>
     <div class="header">
         <img src="{{ url_for('static', filename='images/logo.png') }}">
-        <h1>Welcome, {{user.first_name}}</h1>
+        <h1> Welcome, {{user.first_name}}</h1>
+    </div>
+    <div class=" links">
         <a href="/logout">Logout</a>
     </div>
     <div class="container">
         <div class="user_info">
-            <img>
-            <a href="/profile/{{user_id}}">Profile</a>
+            {% if user.profile_picture_filename %}
+                <img class="profilepic" id="profilePic" src="{{ url_for('static', filename='uploads/' + profile_picture_filename) }}">
+            {% else %}
+                <img class="profilepic" src="{{ url_for('static', filename='uploads/default.jpeg') }}">
+            {% endif %}
+            <a href="/profile/{{user.id}}">Profile</a>
         </div>
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const photoFilename = urlParams.get('photo');
+            if (photoFilename) {
+                document.getElementById('profilePic').src = '/static/uploads/' + photoFilename;
+            }
+        </script>
         <div class="post">
             <h2> Recent Post</h2>
             {% for post in posts %}
-                <p> <strong> {{post.host_username}}</strong> posted to <strong>{{post.book_club}}</strong>{{post.post}} </p>
-                <p> <strong> {{post.date_posted}}</strong> </p>
+                <p>•<strong> {{post.host.username}}</strong> posted to <strong>{{post.book_club}}</strong></p>
+                <p>{{post.comment}} </p>
+                <p> <strong>Date Posted: {{post.date}}</strong> </p>
                 <p> insert likes and comments here</p>
+                {% if session.uid == post.host_id %}
+                        <a href="/post/edit/{{post.id}}">Edit <strong>|</strong></a>
+                        <a href="/delete/{{post.id}}">Delete</a>
+                {% endif %}
             {% endfor %}
         </div>
     </div>

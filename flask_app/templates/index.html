@@ -12,7 +12,7 @@
         <h1>Reader's Corner</h1>
     </div>
     <div class="loginbox">
-        <form action="/login" method="post">
+        <form action="/login" method="POST">
             {% with messages = get_flashed_messages(category_filter=['login']) %}
                 {% if messages %}
                     <div class="alert alert-danger" role="alert">
@@ -23,15 +23,15 @@
                 {% endif %}
             {% endwith %}
             <div class="formgroup"> 
-                <label for="username" class="username"> Username:</label>
+                <label class="username"> Username:</label>
                 <input type="text" name="username"> 
             </div>
             <div class="formgroup"> 
-                <label for="password" class="password"> Password:</label>
+                <label class="password"> Password:</label>
                 <input type="text" name="password">
             </div>
+            <input type="submit" value="login" class="btn">
         </form>
-        <input type="submit" value="login" class="btn">
         <p>Don't Have an Account?</p>
         <a class="registration" href="/registration"> Register Here</a>
     </div>

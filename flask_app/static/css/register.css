@@ -1,0 +1,59 @@
+body{
+    margin-top: 100px;
+    background-image: url('/static/images/background.png');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.header{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+img{
+    height: 40px;
+    width:40px;
+    align-self: center;
+    margin-right: 10px;
+}
+h1{
+    align-self: center;
+    margin-right: 10px;
+    color: navy;
+}
+h2{
+    text-align: center;
+    color: navy;
+}
+.register{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 40%;
+    margin: 20px auto;
+    padding: 20px auto;
+    border: solid 3px violet;
+}
+form{
+    width: auto;
+    height: auto;
+    text-align: center;
+    margin-left: 70px;
+}
+.formgroup{
+    width: 60%;
+    margin-bottom: 10px;
+}
+.btn{
+    background-color: violet;
+    color: navy;
+    border: none;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    padding: 5px;
+    cursor: pointer;
+}
