@@ -36,7 +36,6 @@
                 <p>•<strong> {{post.host.username}}</strong> posted to <strong>{{post.book_club}}</strong></p>
                 <p>{{post.comment}} </p>
                 <p> <strong>Date Posted: {{post.date}}</strong> </p>
-                <p> insert likes and comments here</p>
                 {% if session.uid == post.host_id %}
                         <a href="/post/edit/{{post.id}}">Edit <strong>|</strong></a>
                         <a href="/delete/{{post.id}}">Delete</a>
