@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reader's Corner| Login</title>
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='images/logo.png') }}">
+        <h1>Reader's Corner</h1>
+    </div>
+    <div class="loginbox">
+        <form action="/login" method="POST">
+            {% with messages = get_flashed_messages(category_filter=['login']) %}
+                {% if messages %}
+                    <div class="alert alert-danger" role="alert">
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            <div class="formgroup"> 
+                <label class="username"> Username:</label>
+                <input type="text" name="username"> 
+            </div>
+            <div class="formgroup"> 
+                <label class="password"> Password:</label>
+                <input type="text" name="password">
+            </div>
+            <input type="submit" value="login" class="btn">
+        </form>
+        <p>Don't Have an Account?</p>
+        <a class="registration" href="/registration"> Register Here</a>
+    </div>
+</body>
+</html>

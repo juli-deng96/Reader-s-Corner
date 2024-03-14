@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reader's Corner | Create Post </title>
+    <link rel="stylesheet" type= "text/css" href="{{url_for('static', filename='css/createstyle.css')}}">
+</head>
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='images/logo.png') }}">
+        <h1> Create Post </h1>
+        <div class="links"> 
+            <a href="/homepage"> Home |</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="main">
+         {% with messages = get_flashed_messages(category_filter=['create_post']) %}
+                {% if messages %}
+                    <div class="alert alert-danger" role="alert">
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        <form action="/create_post" method="post">
+            <input type="hidden" name="user_id" value="{{session.uid}}">
+            <div class="post_form"> 
+                <label> Post: </label>
+                <input type="text" name="comment" class="comment"> 
+            </div>
+            <div class="book_form"> 
+                <label> Book Club:</label>
+                <select id="book_club" name="book_club" class="book_club">
+                    <option value=""> Select a Club</option>
+                    <option value="lover_girlz">Lover Girlz</option>
+                    <option value="murder_club">Murder Club</option>
+                    <option value="theoligist">Theatrical Theoligist </option>
+                </select>
+            </div>
+            <div class='date_form'> 
+                <label> Date Posted: </label>
+                <input type="date" id="date" name="date">
+            </div>
+            <input type="submit" value="Submit" class="btn">
+        </form>
+    </div>
+</body>
+</html>

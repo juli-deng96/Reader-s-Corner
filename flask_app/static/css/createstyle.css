@@ -1,0 +1,61 @@
+body{
+    background-color: rgb(251, 238, 223);
+}
+.header{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+img{
+    height: 40px;
+    width:40px;
+    align-self: center;
+    margin-right: 10px;
+    margin-bottom:10px ;
+}
+.links{
+    position: absolute;
+    right: 0; 
+    padding-right: 20px; 
+}
+.main{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px auto;
+    border: solid 3px navy;
+}
+form{
+    width: auto;
+    height: auto;
+    text-align: center;
+}
+.post_form{
+    margin-bottom:20px ;
+    margin-right: 10px;
+}
+.comment{
+    height: 50px;
+    width:250px;
+}
+.book_club{
+    margin-bottom:20px ;
+    margin-right: 10px;
+    width:200px;
+}
+.btn{
+    margin-top: 25px;
+    background-color: navy;
+    color: white;
+    border: none;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    padding: 10px;
+    cursor: pointer;
+}

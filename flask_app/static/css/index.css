@@ -1,0 +1,51 @@
+body{
+    margin-top: 150px;
+    background-image: url('/static/images/background.png');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.header{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+img{
+    height: 40px;
+    width:40px;
+    align-self: center;
+    margin-right: 10px;
+}
+h1{
+    align-self: center;
+    margin-right: 20px;
+}
+.loginbox{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px auto;
+    border: solid 3px violet;
+}
+form{
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 50px;
+}
+.formgroup{
+    align-self: center;
+    margin-right: 10px;
+}
+p{
+    margin-right:20px;
+}
